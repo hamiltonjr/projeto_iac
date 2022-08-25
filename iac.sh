@@ -2,15 +2,13 @@
 
 echo 'Criando diretórios...'
 mkdir /public /adm /ven /sec
-ls
+ls -l
 
 echo '\nCriando os grupos de usuários...'
 groupadd GRP_ADM
 groupadd GRP_VEN
 groupadd GRP_SEC
-cat /etc/group /GRP_ADM
-cat /etc/group /GRP_VEN
-cat /etc/group /GRP_SEC
+cat /etc/group
 
 echo 'Criando usuários...'
 useradd carlos -m -s /bin/bash -G GRP_ADM
@@ -35,6 +33,7 @@ useradd rogerio -m -s /bin/bash -G GRP_SEC
 passwd -e rogerio
 
 echo 'Especificando permissões de diretórios...'
+echo 'Verifique as permissões no diretório..."
 chown root:root /public
 chown root:GRP_ADM /adm
 chown root:GRP_VEN /ven
@@ -44,4 +43,8 @@ chmod 777 /public
 chmod 770 /adm
 chmod 770 /ven
 chmod 770 /sec
+
+ls -l
+
+echo ' === FIM DO SCRIPT === "
 
